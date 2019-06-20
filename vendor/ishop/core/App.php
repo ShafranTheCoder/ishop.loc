@@ -19,6 +19,7 @@ class App
         self::$app = Registry::instance();
         $this->getParams();
         new ErrorHandler();
+        App::dispatch($query);
     }
     protected function getParams() {
         $params = require_once  CONF . '/params.php';
