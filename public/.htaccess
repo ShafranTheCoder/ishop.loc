@@ -1,0 +1,5 @@
+#Если запрос не идет на конкретный файл или папку, отправляем в индекс
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#L - last, QSA - querry string append, поиск, дополнительные правила будут добавлятся
+RewriteRule (.*) index.php?$1 [L,QSA]
