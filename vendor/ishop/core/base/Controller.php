@@ -11,11 +11,12 @@ abstract class Controller
     public $model;
     public $view;
     public $prefix;
+    public $layout;
     public $data = [];
     public $meta = [];
 
 
-    public function __constructor($route) {
+    public function __construct($route) {
         $this->route = $route;
         $this->controller = $route['controller'];
         $this->model = $route['controller'];
@@ -23,6 +24,10 @@ abstract class Controller
         $this->prefix = $route['prefix'];
     }
 
+    public function getView(){
+        $viewObject = new View($this->route, $this->layout, $this->view, $this->meta);
+        $viewObject->render($this->data);
+    }
     public function set($data)
     {
         $this->data = $data;
